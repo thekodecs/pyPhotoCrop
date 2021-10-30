@@ -18,10 +18,9 @@ img = cv2.imread(filename_test)
 
 b, g, r = cv2.split(img)
 
-# grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blurredImg = cv2.GaussianBlur(b, (3, 3), 1)
 cs = CannySettings(100, 30)
-cp_name = "Canny's control panel"
+cp_name = "Canny control panel"
 cp_window = None
 trackbar_1 = None
 trackbar_2 = None
@@ -33,13 +32,6 @@ while True:
     if trackbar_1:
         print(trackbar_1)
 
-    # cv2.imshow("blue", b)
-    # cv2.imshow("green", g)
-    # cv2.imshow("red", r)
-    # cv2.imshow("origin", img)
-    # cv2.imshow("gray", grayImg)
-    # cv2.imshow("blurred", blurredImg)
-    # cv2.imshow("canny", contourImg)
     cv2.imshow("contour", ContourFrame)
 
     pressed_key = cv2.waitKey(1) & 0xFF
@@ -52,3 +44,5 @@ while True:
             trackbar_1 = cv2.createTrackbar(f'Thr 1', cp_name, cs.canny_threshold1, 255, cs.set_threshold1)
         if not cp_window:
             cp_window = cv2.namedWindow(cp_name)
+    else:
+        pass
